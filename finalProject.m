@@ -1,5 +1,5 @@
 %% EE 107: Communication Systems, Fall 2017 - Final Project
-%
+% 
 
 clear all, close all
 %% Image Pre-processing (from hw7)
