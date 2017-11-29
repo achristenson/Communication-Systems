@@ -2,7 +2,8 @@ function [Ztres,r,c,m,n,minval,maxval]=ImagePreProcess_gray(filename,qbits)
 
 % read the image
 
-X = imread(filename);
+RGB = imread(filename);
+X = rgb2gray(RGB);
 
 % crop the image to a size divisible by 8
 [m, n] = size(X);
