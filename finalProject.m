@@ -32,15 +32,23 @@ pulse_SRRC = A*x; % SRRC pulse
 % Plotting all that ish
 figure
 plot(t,pulse_HS);
+title('Half Sine Wave vs Time')
+xlabel('time(s)')
+ylabel('Half Sine Wave')
 
 figure
 freqz(pulse_HS);
+title('Half Sine Wave Frequency Response')
 
 figure
 plot(t2,pulse_SRRC);
+title('SRRC vs Time')
+xlabel('time(s)')
+ylabel('SRRC')
 
 figure
 freqz(pulse_SRRC);
+title('SRRC Frequency Response')
 
 % Create a vector of 10 random bits
 b = round(rand(10,1));
@@ -51,13 +59,21 @@ PS_SRRC = bitStreamModulation(pulse_SRRC,b,t2,0,K);
 figure
 t3 = linspace(0,length(b)*T,length(PS_HS));
 plot(t3, PS_HS)
+title('Half Sine Modulated Bit Stream')
+ylabel('Modulated Signal')
+xlabel('Time')
 
 figure
 freqz(PS_HS)
+title('Frequency Response of Half Sine Modulated Bit Stream')
 
 figure
 t4 = linspace(-K*T,length(b)*T + K*T, length(PS_SRRC));
 plot(t4, PS_SRRC);
+title('SRRC Modulated Bit Stream')
+ylabel('Modulated Signal')
+xlabel('Time')
 
 figure
 freqz(PS_SRRC);
+title('Frequency Response of SRRC Modulated Bit Stream')
