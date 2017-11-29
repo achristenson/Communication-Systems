@@ -42,3 +42,22 @@ plot(t2,pulse_SRRC);
 figure
 freqz(pulse_SRRC);
 
+% Create a vector of 10 random bits
+b = round(rand(10,1));
+
+PS_HS = bitStreamModulation(pulse_HS,b,t,1,K);
+PS_SRRC = bitStreamModulation(pulse_SRRC,b,t2,0,K);
+
+figure
+t3 = linspace(0,length(b)*T,length(PS_HS));
+plot(t3, PS_HS)
+
+figure
+freqz(PS_HS)
+
+figure
+t4 = linspace(-K*T,length(b)*T + K*T, length(PS_SRRC));
+plot(t4, PS_SRRC);
+
+figure
+freqz(PS_SRRC);
