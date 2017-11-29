@@ -13,8 +13,10 @@ qbits = 8;  % quantization bits
 % Transmit DCT blocks in groups of size N
 N = m*n/64; %number of blocks to group together
 
+% Convert to 3D array to the bitstream
 stream = convertToBitStream(Ztres, N);
 
+% Plot the frequency and time of the half sine and SRRC
 plot_half_sine_wave();
 plot_SRRC();
 
