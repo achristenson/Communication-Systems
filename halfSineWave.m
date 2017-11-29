@@ -1,15 +1,7 @@
-function g1 = halfSineWave(t, T, b)
-    % t - time vector
+function g1 = halfSineWave(T)
     % T - bit duration
-    % b - bit value (1 or 0)
-    
+    % b - bit stream
+    t = linspace(0,T,32);
     g1 = sin(pi * t / T);
-    if b == 0
-       g1 = (-1) * g1; 
-    end
-    
-    %0 <= t <= T
-    g1(t < 0) = 0;
-    g1(t > T) = 0;
-    
+
 end
