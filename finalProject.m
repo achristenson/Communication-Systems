@@ -87,3 +87,7 @@ eyediagram(PS_HS,numSamples-1,T,numSamples/2)
 title('Eye diagram for half sine modulated signal')
 
 eyediagram(PS_SRRC,(numSamples*(2*K)),T,K*T)
+
+%% Channel
+space = zeros(numSamples-1, 1);
+h = [1 space 1/2 space 3/4 space -2/7];
