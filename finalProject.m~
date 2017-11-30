@@ -23,7 +23,7 @@ t = linspace(0,T,numSamples);
 pulse_HS = sin(t*pi/T);
 
 % Square root raised cosine
-a = 0.5; % Roll off
+a = 0; % Roll off
 K = 2; % Truncation Factor
 t2 = linspace(-K*T,K*T,2*numSamples*K); % New time vector
 x = SRRC_x(a,t2,T); % x vals for SRRC
@@ -89,5 +89,14 @@ title('Eye diagram for half sine modulated signal')
 eyediagram(PS_SRRC,(numSamples*(2*K)),T,K*T)
 
 %% Channel
-space = zeros(numSamples-1, 1);
-h = [1 space 1/2 space 3/4 space -2/7];
+space = zeros(1, numSamples-1);
+h = [1 space 1/2 space 3/4 space -2/7 space];
+t_h = linspace(0,4*T,length(h));
+freqz(h)
+
+out_PS_HS = conv(PS_HS,h);
+t_out1 = linspace(0,(length(b)+4)*T,length(out_PS_HS));
+plot(t_out1, out_PS_HS)
+
+out_PS_SRRC = co
+

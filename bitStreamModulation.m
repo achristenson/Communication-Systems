@@ -22,6 +22,6 @@ else
         y = [y(1:end-(2*K-1)*32) y(end-(2*K-1)*32+1:end)+dummy(1:(2*K-1)*32) dummy((2*K-1)*32+1:end)];
     end
 end
-c=1;
+
         
     

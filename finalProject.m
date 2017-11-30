@@ -43,7 +43,8 @@ title('Half Sine Wave Frequency Response')
 
 figure
 plot(t2,pulse_SRRC);
-title('SRRC vs Time')
+ttl = sprintf('SRRC vs Time K=%d', K);
+title(ttl)
 xlabel('time(s)')
 ylabel('SRRC')
 
@@ -72,7 +73,8 @@ title('Frequency Response of Half Sine Modulated Bit Stream')
 figure
 t4 = linspace(-K*T,length(b)*T + K*T, length(PS_SRRC));
 plot(t4, PS_SRRC);
-title('SRRC Modulated Bit Stream')
+ttl = sprintf('SRRC Modulated Bit Stream, K=%d', K);
+title(ttl)
 ylabel('Modulated Signal')
 xlabel('Time')
 
@@ -86,8 +88,38 @@ title('Frequency Response of SRRC Modulated Bit Stream')
 eyediagram(PS_HS,numSamples-1,T,numSamples/2)
 title('Eye diagram for half sine modulated signal')
 
+% eye diagram for SRRC modulated signal
 eyediagram(PS_SRRC,(numSamples*(2*K)),T,K*T)
 
-%% Channel
-space = zeros(numSamples-1, 1);
-h = [1 space 1/2 space 3/4 space -2/7];
+%% Q5 Channel impulse and frequency response
+space = zeros(1, numSamples-1);
+h = [1 space 1/2 space 3/4 space -2/7 space];
+t_h = linspace(0,4*T,length(h));
+figure
+plot(t_h,h)
+title('Channel Impulse Response')
+xlabel('Time')
+ylabel('Channel')
+freqz(h)
+title('Channel Frequency Response')
+
+out_PS_HS = conv(PS_HS,h);
+t_out1 = linspace(0,(length(b)+4)*T,length(out_PS_HS));
+figure
+subplot(2,1,1)
+plot(t_out1, out_PS_HS)
+xlabel('Time')
+ylabel('Channel output')
+title('Channel output for modulated signal with Half Sine Wave')
+
+out_PS_SRRC = conv(PS_SRRC,h);
+t_out2 = linspace(0,(length(b)+4)*T,length(out_PS_SRRC));
+subplot(2,1,2)
+plot(t_out2, out_PS_SRRC);
+xlabel('Time')
+ylabel('Channel output')
+title('Channel output for modulated signal with SRRC')
+
+
+
+
