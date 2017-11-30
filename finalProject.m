@@ -23,7 +23,7 @@ t = linspace(0,T,numSamples);
 pulse_HS = sin(t*pi/T);
 
 % Square root raised cosine
-a = 0.5; % Roll off
+a = 0; % Roll off
 K = 2; % Truncation Factor
 t2 = linspace(-K*T,K*T,2*numSamples*K); % New time vector
 x = SRRC_x(a,t2,T); % x vals for SRRC

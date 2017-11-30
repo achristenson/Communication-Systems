@@ -18,8 +18,10 @@ else
         dummy = factor(i)*pulse;
 %         y(end-(2*K-1):end) = y(end-(2*K-1):end)+dummy(1:2*K);
 %         y = [y dummy(2*K+1:end)];
-        y = [y(1:end-2*K) y(end-(2*K-1):end)+dummy(1:2*K) dummy(2*K+1:end)];
+        %y = [y(1:end-2*K) y(end-(2*K-1):end)+dummy(1:2*K) dummy(2*K+1:end)];
+        y = [y(1:end-(2*K-1)*32) y(end-(2*K-1)*32+1:end)+dummy(1:(2*K-1)*32) dummy((2*K-1)*32+1:end)];
     end
 end
+c=1;
         
     
