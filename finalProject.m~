@@ -18,14 +18,13 @@ stream = convertToBitStream(Ztres, N);
 
 % Half sine
 T = 1;
-numSamples = 32;
-t = linspace(0,T,numSamples);
+t = linspace(0,T,32);
 pulse_HS = sin(t*pi/T);
 
 % Square root raised cosine
 a = 0.5; % Roll off
 K = 2; % Truncation Factor
-t2 = linspace(-K*T,K*T,2*numSamples*K); % New time vector
+t2 = linspace(-K*T,K*T,64*K); % New time vector
 x = SRRC_x(a,t2,T); % x vals for SRRC
 A = sqrt(sum(pulse_HS.^2)/sum(x.^2)); % Amplitude correction factor
 pulse_SRRC = A*x; % SRRC pulse
@@ -51,8 +50,7 @@ figure
 freqz(pulse_SRRC);
 title('SRRC Frequency Response')
 
-%% Q2&Q3 Modulate a 10-bit random vector of bits with both pulses
-% Plot modulated signals and their frequency responses
+%% Q3 Modulate a 10-bit random vector of bits with both pulses
 b = round(rand(10,1));
 
 PS_HS = bitStreamModulation(pulse_HS,b,t,1,K);
@@ -80,10 +78,4 @@ figure
 freqz(PS_SRRC);
 title('Frequency Response of SRRC Modulated Bit Stream')
 
-%% Q4 Plot the transmit eye diagram for both pulses
-
-% eye diagram for half sine modulated signal
-eyediagram(PS_HS,numSamples-1,T,numSamples/2)
-title('Eye diagram for half sine modulated signal')
-
-eyediagram(PS_SRRC,(numSamples*(2*K)),T,K*T)
+%% Q2 Plot the spectrum of the modulated signals
