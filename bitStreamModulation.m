@@ -39,8 +39,4 @@ convDum = [convDum factor(end)];
 
 y = conv(pulse,convDum);
 
-% if ~HS
-%     y = y(K*32:end-32*K);
-% end
-
 return    
