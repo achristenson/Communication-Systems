@@ -88,7 +88,7 @@ eyediagram(PS_HS,numSamples,T,numSamples/2)
 title('Eye diagram for half sine modulated signal')
 
 % eye diagram for SRRC modulated signal
-eyediagram(PS_SRRC,(numSamples*(2*K)),T,K*T)
+eyediagram(PS_SRRC,(numSamples),T,K*numSamples/2)
 
 %% Q5 Channel impulse and frequency response
 space = zeros(1, numSamples-1);
